@@ -1,0 +1,26 @@
+{
+  "name": "oakslab-assignment",
+  "version": "1.0.0",
+  "description": "assignemt for position JS Full-stack developer",
+  "main": "apollo.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Nadosha/oakslab-assignment-server.git"
+  },
+  "keywords": [
+    "oakslab-assignment"
+  ],
+  "author": "Andrey Nadosha",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Nadosha/oakslab-assignment-server/issues"
+  },
+  "homepage": "https://github.com/Nadosha/oakslab-assignment-server#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.3.0",
+    "express": "^4.17.1"
+  }
+}
