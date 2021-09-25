@@ -1,24 +1,14 @@
 import express from "express";
+import { ApolloServer } from "apollo-server-express";
+// import connectMongo from "./mongo-connector";
 import mongoose from "mongoose";
-import { ApolloServer, gql } from "apollo-server-express";
+import schema from "./schema";
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-const resolvers = {
-  Query: {
-    hello: () => {
-      return "hello";
-    },
-  },
-};
-async function startServer() {
+const startServer = async () => {
+  // await connectMongo();
   const app = express();
   const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({
@@ -29,6 +19,12 @@ async function startServer() {
     res.send("Express server running...");
   });
 
+  await mongoose.connect("mongodb://localhost:3001/startup", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  });
+  console.log("Mongoose connected ...");
   app.listen(3030, () => console.log("Server is running on port 3030"));
-}
+};
+
 startServer();

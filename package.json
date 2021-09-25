@@ -5,7 +5,8 @@
   "main": "apollo.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js --exec babel-node --presets babel-preset-env"
+    "start": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
+    "mongo": "mongod --port 3001 --dbpath ./.local/db/"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,10 @@
     "mongoose": "^6.0.7"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
     "nodemon": "^2.0.12",
     "prettier": "2.4.1"
   }
