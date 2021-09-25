@@ -1,11 +1,9 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
-// import connectMongo from "./mongo-connector";
 import mongoose from "mongoose";
 import schema from "./schema";
 
 const startServer = async () => {
-  // await connectMongo();
   const app = express();
   const apolloServer = new ApolloServer({
     schema,
