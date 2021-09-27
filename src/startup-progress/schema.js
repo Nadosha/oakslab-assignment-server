@@ -1,7 +1,6 @@
 import { gql } from "apollo-server-express";
 
 export const startupProgress = gql`
-  scalar Void
   type Todo {
     id: ID
     title: String

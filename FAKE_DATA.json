@@ -1,0 +1,52 @@
+[{
+  "title" : "Foundation",
+  "isCompleted" : true,
+  "toDo" : [
+    {
+      "title" : "Setup virtual office",
+      "completed" : true
+
+    },
+    {
+      "title" : "Set mission & vision",
+      "completed" : false
+    },
+    {
+      "title" : "Select business name",
+      "completed" : false
+    },
+    {
+      "title" : "Buy domains",
+      "completed" : false
+    }
+  ]
+},
+  {
+    "title" : "Discovery",
+    "isCompleted" : false,
+    "toDo" : [
+      {
+        "title" : "Create roadmap",
+        "completed" : false
+      },
+      {
+        "title" : "Competitor analysis",
+        "completed" : false
+      }
+    ]
+  },
+  {
+    "title" : "Delivery",
+    "isCompleted" : false,
+    "toDo" : [
+      {
+        "title" : "Release marketing website",
+        "completed" : false
+
+      },
+      {
+        "title" : "Release MVP",
+        "completed" : false
+      }
+    ]
+  }]

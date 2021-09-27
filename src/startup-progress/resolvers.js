@@ -8,6 +8,7 @@ export const Query = {
 
 export const Mutation = {
   createProgress: async (parent, args, context, info) => {
+    // For future realization - currently is released but not used
     const { steps } = args;
     Steps.insertMany(steps).catch((err) => console.log(err));
     return Steps.find();
@@ -16,27 +17,27 @@ export const Mutation = {
   updateProgress: async (parent, args, context, info) => {
     const { stepId, todoId, value } = args.step;
     let updatedDoc = await Steps.findOneAndUpdate(
-      { _id: stepId, "toDo._id": todoId },
+      { _id:  stepId, "toDo._id": todoId },
       {
         $set: {
           "toDo.$.completed": value,
         },
       },
       { returnOriginal: false }
-    );
-    // TODO should simplify this logic
-    // if all todos completed or not update Step to completed or not
-    const doc = await Steps.findOne({ _id: stepId });
-    const isCompleted = doc.toDo.every((val) => val.completed === true);
-    updatedDoc = await Steps.findOneAndUpdate(
-      { _id: stepId },
-      {
-        $set: {
-          isCompleted: isCompleted,
-        },
-      },
-      { returnOriginal: false }
-    );
+    ).then((res) => {
+      // Tasks cannot be marked as completed unless all tasks in the previous phase were completed.
+      const isCompleted = res.toDo.every((val) => val.completed === true);
+      return Steps.findOneAndUpdate(
+          { _id: stepId },
+          {
+            $set: {
+              isCompleted: isCompleted,
+            },
+          },
+          { returnOriginal: false }
+      );
+    }).catch((err) => console.log(err));
+
 
     return updatedDoc;
   },
